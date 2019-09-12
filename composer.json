@@ -1,0 +1,14 @@
+{
+    "name": "afi/dizel-app",
+    "description": "Application skeleton for Diezel framework",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrey Filippov",
+            "email": "afi.work@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
