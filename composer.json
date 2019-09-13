@@ -1,6 +1,6 @@
 {
     "name": "afi/dizel-app",
-    "description": "Application skeleton for Diezel framework",
+    "description": "Application skeleton for Dizel framework",
     "type": "project",
     "license": "MIT",
     "authors": [
@@ -12,6 +12,6 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=7.2",
-        "afi/dizel-framework": "dev-master"
+        "afi/dizel-framework": "dev-init"
     }
 }
