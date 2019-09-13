@@ -1,0 +1,22 @@
+version: '2'
+services:
+  dizel-app-php73:
+    build: php7.3/
+    command: "bash -c 'cd /app && composer install && export APP_CONFIG=config/web.dev.php APP_DEBUG_MODE=true && php -S 0.0.0.0:9191 -t /app'"
+    # image: php7-afi-alpine
+    volumes:
+      # - .composer-docker/cache:/root/.composer/cache:delegated
+      - ./:/app:delegated
+    networks:
+      net_citycard:
+        ipv4_address: 172.25.0.10
+    # ports:
+    #   - '9191:9191'
+
+networks:
+  net_citycard:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.25.0.0/24    
