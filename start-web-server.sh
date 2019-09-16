@@ -1,6 +1,7 @@
 #!/bin/bash
 
-docker-compose up --build
+# docker-compose build --force-rm && 
+docker-compose up --build --remove-orphans
 
 # docker-compose run --rm php7 php -S 0.0.0.0:9292 -t /app
 

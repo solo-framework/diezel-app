@@ -1,0 +1,20 @@
+
+{% extends "layouts/index.twig" %}
+
+
+{% block content %}
+
+	<h1>Index View</h1>
+
+	<form action="/action/test" method="post">
+		<input type="text" name="myvalue"/>
+		<button>Submit form for test action</button>
+	</form>
+
+	<pre>Template values: {{ dump() }}</pre>
+
+	{% if myValue %}
+		<p>Value from action 'test': {{ myValue }} </p>
+	{% endif %}
+
+{% endblock %}

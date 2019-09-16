@@ -1,9 +1,13 @@
 version: '2'
 services:
-  dizel-app-php73:
-    build: php7.3/
-    command: "bash -c 'cd /app && composer install && export APP_CONFIG=config/web.dev.php APP_DEBUG_MODE=true && php -S 0.0.0.0:9191 -t /app'"
-    # image: php7-afi-alpine
+  dizel-web-php73:
+    build: docker/php7.3/
+    container_name: dizel-app-skeleton
+    image: dizel-app-php73
+    environment:
+      - APP_CONFIG=../config/web.dev.php
+      - APP_DEBUG_MODE=true
+    command: "bash -c 'cd /app && composer install && php -S 0.0.0.0:9191 -t /app/public'"
     volumes:
       # - .composer-docker/cache:/root/.composer/cache:delegated
       - ./:/app:delegated
@@ -13,10 +17,22 @@ services:
     # ports:
     #   - '9191:9191'
 
+#  dizel-cli-php73:
+##    build: docker/php7.3/
+##    container_name: dizel-app-skeleton
+#    image: dizel-app-php73
+#    environment:
+#      - APP_CONFIG=../config/cli.dev.php
+#      - APP_DEBUG_MODE=true
+##    command: "bash -c 'cd /app && composer install && chmod -R 0777 /app/vendor && php -S 0.0.0.0:9191 -t /app/public'"
+#    volumes:
+#      # - .composer-docker/cache:/root/.composer/cache:delegated
+#      - ./:/app:delegated
+
 networks:
   net_citycard:
     driver: bridge
     ipam:
       driver: default
       config:
-        - subnet: 172.25.0.0/24    
+        - subnet: 172.25.0.0/24

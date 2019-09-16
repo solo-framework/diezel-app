@@ -13,5 +13,15 @@
     "require": {
         "php": ">=7.2",
         "afi/dizel-framework": "dev-init"
+    },
+    "autoload": {
+        "psr-4": {
+			"Web\\" : [
+				"apps/web"
+			],
+			"CLI\\" : [
+				"apps/console"
+			]
+        }
     }
 }
