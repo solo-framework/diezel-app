@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Page for internal errors</title>
+	<style type="text/css">
+		body{margin:0;padding:30px;font:12px/1.5 Helvetica,Arial,Verdana,sans-serif;}h1{margin:0;font-size:48px;font-weight:normal;line-height:48px;}strong{display:inline-block;width:65px;}
+	</style>
+</head>
+<body>
+<h1>Internal Error</h1>
+
+{% if debug %}
+	<h2>Details</h2>
+
+	<p>
+		{{ type }}: {{ error.getMessage() }} <i>in {{ error.getFile() }}, {{ error.getLine() }}</i>
+	</p>
+
+	<h2>Trace</h2>
+	<pre>{{ error.getTraceAsString() }}</pre>
+
+	<h2>Prev errors</h2>
+	{% for prev in error.getPrevious() %}
+		<h3>Details</h3>
+		<p>{{ prev.getMessage() }} <i>in {{ prev.getFile() }}, {{ prev.getLine() }}</i></p>
+		<h3>Trace</h3>
+		<pre>{{ prev.getTraceAsString() }}</pre>
+		<hr>
+	{% endfor %}
+
+	{% else %}
+		A website error has occurred. Sorry for the temporary inconvenience.
+{% endif %}
+
+</body>
+</html>

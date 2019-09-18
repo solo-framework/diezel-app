@@ -16,6 +16,8 @@ use Dizel\View;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Router;
+use Web\Helper\InternalErrorHandler;
 
 class IndexView extends View
 {
@@ -47,13 +49,19 @@ class IndexView extends View
 	public function execute(Request $request, Response $response, array $args)
 	{
 //		print_r(Application::getInstance()->getComponent("router")->pathFor("action.test"));
-//		print_r(Application::getInstance()->app->getContainer()->get("router")->pathFor("action.test"));
 
+
+//		$i = new InternalErrorHandler(Application::getInstance()->app->getContainer(), true);
+//		$i->
+//		throw new \Error("rrrrrrr");
+//		throw new \RuntimeException("runt");
+//		echo $s;
 		$this->logger->debug("page", ["index"]);
 
 		$this->title = $request->getParam("title", $this->title);
 		$this->myValue = Context::delete("my_value");
-		return $this->display($response);//, "IndexView.twig");
+
+		return $this->display($response);
 	}
 }
 

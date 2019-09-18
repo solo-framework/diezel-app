@@ -42,10 +42,22 @@ return [
 	"app" => [
 //		"debug"   => false,
 		"routing" => BASE_DIRECTORY . "/config/web.routing.php",
-		"phpErrorHandler" => \Dizel\Components\InternalErrorHandler::class,
+	],
+
+	"handlers" => [
+		"phpErrorHandler" => \Web\Handler\Error::class,
+		"errorHandler" =>  \Web\Handler\Error::class,
+		"notFoundHandler" => \Web\Handler\NotFound::class,
+		"notAllowedHandler" => \Web\Handler\NotAllowed::class,
 	],
 
 	"components" => [
+
+//		"notFoundHandler" => [
+//			"@class"  => \Slim\Handlers\NotFound::class,
+//			"options" => null
+//		],
+
 		"view" => [
 			"@class"  => \Dizel\Components\Twig::class,
 
