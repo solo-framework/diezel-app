@@ -5,20 +5,16 @@
  * PHP version 5
  *
  * @package
- * @author  Andrey Filippov <afi@i-loto.ru>
+ * @author  Andrey Filippov <afi.work@gmail.com>
  */
 
 namespace Web\Action;
 
-use Dizel\Action;
-use Dizel\Traits\AJAXResponse;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class AjaxAction extends Action
+class AjaxAction extends PublicAction
 {
-
-	use AJAXResponse;
 
 	/**
 	 * @param Request $request

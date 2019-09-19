@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 
 	{% block head %}
-		<title>Title: {{ title }}</title>
+		<title>Home Title: {{ title }}</title>
 	{% endblock %}
 
 </head>
@@ -12,13 +12,13 @@
 
 <div style="color: red;">{{ flashMessage['message'] }}</div>
 
-	<div id="content">{% block content %}{% endblock %}</div>
+<div id="content">{% block content %}{% endblock %}</div>
 
-	<div id="footer">
-		{% block footer %}
-			<hr>
-			footer
-		{% endblock %}
-	</div>
+<div id="footer">
+	{% block footer %}
+		<hr>
+		footer
+	{% endblock %}
+</div>
 </body>
 </html>

@@ -6,12 +6,18 @@
 
 	<h1>Index View</h1>
 
-	<form action="/action/test" method="post">
-		<input type="text" name="myvalue"/>
-		<button>Submit form for test action</button>
+	{#<img src="1.jpg" alt="">#}
+
+	<i>Try to submit wrong or actual password to view home page. Real password is "secret"</i>
+
+	<form action="/action/login" method="post">
+		<input type="text" name="name" placeholder="enter your name..."/>
+		<input type="text" name="secret" placeholder="enter a password..."/>
+		<button>Submit form</button>
 	</form>
 
-	<pre>Template values: {{ dump() }}</pre>
+	<h2>Template values</h2>
+	<pre>{{ dump() }}</pre>
 
 	{% if myValue %}
 		<p>Value from action 'test': {{ myValue }} </p>

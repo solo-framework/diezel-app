@@ -38,6 +38,7 @@ RUN set -ex; \
 	        php7-session \
 	        php7-zlib \
 	        php7-tokenizer \
+	        php7-fpm \
 			php7-xdebug; \
 
 
@@ -75,5 +76,7 @@ RUN curl --silent --fail --location --retry 3 --output /tmp/installer.php --url 
 RUN cp /usr/share/zoneinfo/Etc/UTC /etc/localtime; \
     echo "UTC" >  /etc/timezone;\
     apk del tzdata;
+
+RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php7/php.ini
 
 # RUN echo "zend_extension=xdebug.so" > /etc/php7/conf.d/xdebug.ini;

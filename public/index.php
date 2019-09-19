@@ -10,10 +10,11 @@
  * If you are not using Composer, you need to load Slim Framework with your own
  * PSR-4 autoloader.
  */
-$start = microtime(true);
+declare(strict_types=1);
 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+$start = microtime(true);
+//error_reporting(E_ALL);
+//ini_set("display_errors", 1);
 
 require '../vendor/autoload.php';
 

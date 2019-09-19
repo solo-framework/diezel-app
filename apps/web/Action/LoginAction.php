@@ -5,17 +5,16 @@
  * PHP version 5
  *
  * @package
- * @author  Andrey Filippov <afi@i-loto.ru>
+ * @author  Andrey Filippov <afi.work@gmail.com>
  */
 
 namespace Web\Action;
 
-use Dizel\Action;
 use Dizel\Context;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class TestAction extends Action
+class LoginAction extends PublicAction
 {
 
 	/**
@@ -39,19 +38,27 @@ class TestAction extends Action
 	 */
 	public function execute(Request $request, Response $response, array $args)
 	{
-		$this->logger->error("ajax", [$request->isXhr()]);
+		try
+		{
+			$secret = $request->getParam("secret");
 
-		$myValue = $request->getParam("myvalue");
-//		$this->logger->error($myValue);
-		Context::set("my_value", $myValue);
+			if ($secret !== "secret")
+			{
+				Context::setFlashMessage("Wrong password", "error");
+				return $this->redirectBack();
+			}
+			else
+			{
+				Context::setActor(["user_name" => $request->getParam("name")]);
+			}
+		}
+		catch (\Exception $e)
+		{
+			// catch error and log
+			$this->logger->error("Error!", ["post" => $request->getParams()]);
+		}
 
-		// do some work
-		return $response->withRedirect("/index");
-
-		// or return some data
-//		return $response->withJson($request->getParams());
-
-		// you may use trait AJAXResponse for return JSON as well
+		return $this->redirect("/home");
 	}
 }
 
