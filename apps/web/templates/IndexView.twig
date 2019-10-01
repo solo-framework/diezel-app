@@ -4,13 +4,19 @@
 
 {% block content %}
 
+	{#{{ test_func(2, 6) }}#}
+
+	<pre>Current actor is: {{ current_actor() }}</pre>
+
+
+	{#{{ "11"|rot13 }}#}
 	<h1>Index View</h1>
 
 	{#<img src="1.jpg" alt="">#}
 
 	<i>Try to submit wrong or actual password to view home page. Real password is "secret"</i>
 
-	<form action="/action/login" method="post">
+	<form action="{{ path_for("action.login") }}" method="post">
 		<input type="text" name="name" placeholder="enter your name..."/>
 		<input type="text" name="secret" placeholder="enter a password..."/>
 		<button>Submit form</button>
@@ -24,3 +30,5 @@
 	{% endif %}
 
 {% endblock %}
+
+

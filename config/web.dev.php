@@ -52,4 +52,16 @@ return [
 //			]
 //		]
 	],
+
+	"components" => [
+
+		"view" => [
+
+			// Twig_Environment options
+			"options" => [
+				"debug" => true,
+				"cache" => false
+			]
+		]
+	],
 ];

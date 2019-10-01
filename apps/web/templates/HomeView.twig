@@ -4,8 +4,21 @@
 
 {% block content %}
 
+	<pre>Current actor is: {{ current_actor()}}</pre>
 	<h1>Home View</h1>
 
-	Hello, {{ actor.user_name }}
+	Hello, {{ actor.user_name | title}}
+
+	<p>
+		ROT13 filter example: {{ "hello!" | rot13 }}
+	</p>
+
+	<h2>Template values</h2>
+	<pre>{{ dump() }}</pre>
+
+	<hr>
+	<form action="{{ path_for("action.logout") }}" method="post">
+		<input type="submit" value="Press to log out"/>
+	</form>
 
 {% endblock %}

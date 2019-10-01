@@ -53,29 +53,17 @@ return [
 
 	"components" => [
 
-//		"notFoundHandler" => [
-//			"@class"  => \Slim\Handlers\NotFound::class,
-//			"options" => null
-//		],
-
 		"view" => [
 			"@class"  => \Dizel\Components\Twig::class,
 
 			// Twig_Environment options
 			"options" => [
 				"path"       => BASE_DIRECTORY . "/apps/web/templates",
-				"debug"      => true,
+				"debug"      => false,
 				"cache"      => BASE_DIRECTORY . "/var/cache",
-				"extensions" => [
-					\Twig\Extension\DebugExtension::class
-				],
-				"filters"    => [],
-				"functions"  => [],
-				"tags"       => [],
-
-				"tests" => [],
+				// class to load custom extensions, filters, functions, tags, etc.
+				"extension_loader_class" => \Web\UI\TwigExtensionsLoader::class
 			]
-
 		]
 	],
 

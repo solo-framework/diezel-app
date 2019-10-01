@@ -19,5 +19,6 @@ $router->get("/", IndexView::class)->setName("view.index");
 $router->get("/index", IndexView::class)->setName("view.index");
 $router->get("/home", HomeView::class)->setName("view.home");
 
-$router->post("/action/login", \Web\Action\LoginAction::class)->setName("action.test");
+$router->post("/action/login", \Web\Action\LoginAction::class)->setName("action.login");
+$router->post("/action/logout", \Web\Action\LogoutAction::class)->setName("action.logout");
 $router->post("/action/ajax", \Web\Action\AjaxAction::class)->setName("action.ajax");
