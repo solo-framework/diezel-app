@@ -4,15 +4,9 @@
 
 {% block content %}
 
-	{#{{ test_func(2, 6) }}#}
-
 	<pre>Current actor is: {{ current_actor() }}</pre>
 
-
-	{#{{ "11"|rot13 }}#}
 	<h1>Index View</h1>
-
-	{#<img src="1.jpg" alt="">#}
 
 	<i>Try to submit wrong or actual password to view home page. Real password is "secret"</i>
 
@@ -25,10 +19,36 @@
 	<h2>Template values</h2>
 	<pre>{{ dump() }}</pre>
 
-	{% if myValue %}
-		<p>Value from action 'test': {{ myValue }} </p>
-	{% endif %}
+	<div>
+		<input type="button" id="btn_ajax" value="Get data by AJAX"/>
+		<div id="ajax_content"></div>
+	</div>
 
+{% endblock %}
+
+
+{% block js %}
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", () => {
+
+			let btn = document.getElementById("btn_ajax");
+			let content = document.getElementById("ajax_content");
+
+			btn.onclick = async function (e)
+			{
+				try
+				{
+					let url = '/ajax/test';
+					let response = await fetch(url);
+					content.innerHTML = await response.text();
+				}
+				catch (e)
+				{
+					console.log("ERROR", e);
+				}
+			}
+		});
+	</script>
 {% endblock %}
 
 

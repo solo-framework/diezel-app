@@ -13,7 +13,7 @@ namespace Web\View;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class HomeView extends PrivateView
+class AjaxView extends PublicView
 {
 
 	/**

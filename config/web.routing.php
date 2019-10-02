@@ -18,6 +18,7 @@ $router = \Dizel\Application::getInstance()->app;
 $router->get("/", IndexView::class)->setName("view.index");
 $router->get("/index", IndexView::class)->setName("view.index");
 $router->get("/home", HomeView::class)->setName("view.home");
+$router->get("/ajax/test", \Web\View\AjaxView::class)->setName("view.ajax.test");
 
 $router->post("/action/login", \Web\Action\LoginAction::class)->setName("action.login");
 $router->post("/action/logout", \Web\Action\LogoutAction::class)->setName("action.logout");
